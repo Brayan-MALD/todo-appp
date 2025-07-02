@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import TodoList from '../components/TodoList';
 
 export default function Todos() {
   const [todos, setTodos] = useState([]);
@@ -65,26 +66,10 @@ export default function Todos() {
       </form>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
-
       {loading ? (
         <p>Cargando todos...</p>
       ) : (
-        <ul>
-          {todos.map((todo) => (
-            <li key={todo.id} style={{ cursor: 'pointer' }}>
-              <span
-                onClick={() => toggleTodo(todo.id)}
-                style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
-              >
-                {todo.title}
-              </span>{' '}
-              - <strong>{todo.completed ? '✅ Completado' : '⏳ Pendiente'}</strong>{' '}
-              <button onClick={() => eliminarTodo(todo.id)} style={{ marginLeft: '10px' }}>
-                🗑️
-              </button>
-            </li>
-          ))}
-        </ul>
+        <TodoList todos={todos} onToggle={toggleTodo} onDelete={eliminarTodo} />
       )}
     </div>
   );
