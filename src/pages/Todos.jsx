@@ -14,7 +14,6 @@ export default function Todos() {
 
   const handleAddTodo = (e) => {
     e.preventDefault();
-
     if (newTodo.trim() === '') return alert('El campo no puede estar vacío');
 
     const nuevo = {
@@ -25,6 +24,13 @@ export default function Todos() {
 
     setTodos([...todos, nuevo]);
     setNewTodo('');
+  };
+
+  const toggleTodo = (id) => {
+    const nuevosTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    );
+    setTodos(nuevosTodos);
   };
 
   return (
@@ -43,7 +49,7 @@ export default function Todos() {
 
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>
+          <li key={todo.id} onClick={() => toggleTodo(todo.id)} style={{ cursor: 'pointer' }}>
             <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
               {todo.title}
             </span>{' '}
