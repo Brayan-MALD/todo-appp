@@ -11,6 +11,9 @@ export default function TodoItem({ todo, onToggle, onDelete }) {
       <button onClick={() => onDelete(todo.id)} style={{ marginLeft: '10px' }}>
         🗑️
       </button>
+      <button disabled style={{ marginLeft: '5px' }}>
+        ✏️ Editar
+      </button>
     </li>
   );
 }
