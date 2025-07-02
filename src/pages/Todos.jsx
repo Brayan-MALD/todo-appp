@@ -65,6 +65,14 @@ export default function Todos() {
         <button type="submit">Agregar</button>
       </form>
 
+      {/* Placeholder: Filtros */}
+      <div style={{ margin: '10px 0' }}>
+        <strong>Filtro:</strong>{' '}
+        <button disabled>Todos</button>{' '}
+        <button disabled>Completados</button>{' '}
+        <button disabled>Pendientes</button>
+      </div>
+
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {loading ? (
         <p>Cargando todos...</p>
