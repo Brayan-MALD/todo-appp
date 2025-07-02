@@ -3,12 +3,17 @@ import { useEffect, useState } from 'react';
 export default function Todos() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
       .then((res) => res.json())
       .then((data) => {
         setTodos(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
       });
   }, []);
 
@@ -52,22 +57,26 @@ export default function Todos() {
         <button type="submit">Agregar</button>
       </form>
 
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id} style={{ cursor: 'pointer' }}>
-            <span
-              onClick={() => toggleTodo(todo.id)}
-              style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
-            >
-              {todo.title}
-            </span>{' '}
-            - <strong>{todo.completed ? '✅ Completado' : '⏳ Pendiente'}</strong>{' '}
-            <button onClick={() => eliminarTodo(todo.id)} style={{ marginLeft: '10px' }}>
-              🗑️
-            </button>
-          </li>
-        ))}
-      </ul>
+      {loading ? (
+        <p>Cargando todos...</p>
+      ) : (
+        <ul>
+          {todos.map((todo) => (
+            <li key={todo.id} style={{ cursor: 'pointer' }}>
+              <span
+                onClick={() => toggleTodo(todo.id)}
+                style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+              >
+                {todo.title}
+              </span>{' '}
+              - <strong>{todo.completed ? '✅ Completado' : '⏳ Pendiente'}</strong>{' '}
+              <button onClick={() => eliminarTodo(todo.id)} style={{ marginLeft: '10px' }}>
+                🗑️
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
