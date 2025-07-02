@@ -1,12 +1,28 @@
-# React + Vite
+# Todo App (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta aplicación permite gestionar una lista de tareas (todos) utilizando React, manejo de rutas y consumo de APIs REST.
 
-Currently, two official plugins are available:
+## 🛠️ Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ Rutas configuradas: `/`, `/todos`, `/registro`
+- 🔄 Listado de todos desde API (`jsonplaceholder`)
+- ➕ Formulario para agregar nuevos todos con validación
+- ✅ Marcar como completado/pending haciendo clic
+- 🗑️ Eliminar un todo con botón
+- ⏳ Indicador de carga mientras se obtienen los datos
+- ❌ Manejo de errores en el fetch (con `try/catch`)
+- ♻️ Código modular dividido en componentes reutilizables (`TodoItem`, `TodoList`)
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologías
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- React Router DOM
+- Vite
+
+---
+
+## 🧪 Instrucciones
+
+```bash
+npm install
+npm run dev
