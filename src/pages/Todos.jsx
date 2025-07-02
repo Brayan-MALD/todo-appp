@@ -33,6 +33,11 @@ export default function Todos() {
     setTodos(nuevosTodos);
   };
 
+  const eliminarTodo = (id) => {
+    const nuevosTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(nuevosTodos);
+  };
+
   return (
     <div>
       <h2>Lista de Todos</h2>
@@ -49,11 +54,17 @@ export default function Todos() {
 
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id} onClick={() => toggleTodo(todo.id)} style={{ cursor: 'pointer' }}>
-            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+          <li key={todo.id} style={{ cursor: 'pointer' }}>
+            <span
+              onClick={() => toggleTodo(todo.id)}
+              style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+            >
               {todo.title}
             </span>{' '}
-            - <strong>{todo.completed ? '✅ Completado' : '⏳ Pendiente'}</strong>
+            - <strong>{todo.completed ? '✅ Completado' : '⏳ Pendiente'}</strong>{' '}
+            <button onClick={() => eliminarTodo(todo.id)} style={{ marginLeft: '10px' }}>
+              🗑️
+            </button>
           </li>
         ))}
       </ul>
