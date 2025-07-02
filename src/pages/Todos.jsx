@@ -4,17 +4,24 @@ export default function Todos() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchTodos = async () => {
+      try {
+        const res = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=10');
+        if (!res.ok) throw new Error('Error al cargar los datos');
+        const data = await res.json();
         setTodos(data);
+      } catch (error) {
+        console.error(error);
+        setError('Ocurrió un error al cargar los todos.');
+      } finally {
         setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+      }
+    };
+
+    fetchTodos();
   }, []);
 
   const handleAddTodo = (e) => {
@@ -56,6 +63,8 @@ export default function Todos() {
         />
         <button type="submit">Agregar</button>
       </form>
+
+      {error && <p style={{ color: 'red' }}>{error}</p>}
 
       {loading ? (
         <p>Cargando todos...</p>
