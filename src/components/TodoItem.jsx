@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react';
 
 export default function TareaItem({ tarea, alternarEstado, eliminarTarea, actualizarTitulo }) {
@@ -35,6 +36,24 @@ export default function TareaItem({ tarea, alternarEstado, eliminarTarea, actual
           </div>
         </>
       )}
+=======
+export default function TodoItem({ todo, onToggle, onDelete }) {
+  return (
+    <li style={{ cursor: 'pointer' }}>
+      <span
+        onClick={() => onToggle(todo.id)}
+        style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+      >
+        {todo.title}
+      </span>{' '}
+      - <strong>{todo.completed ? '✅ Completado' : '⏳ Pendiente'}</strong>{' '}
+      <button onClick={() => onDelete(todo.id)} style={{ marginLeft: '10px' }}>
+        🗑️
+      </button>
+      <button disabled style={{ marginLeft: '5px' }}>
+        ✏️ Editar
+      </button>
+>>>>>>> 8b9808952aa16ad877d622e65ad9c62c46edc353
     </li>
   );
 }

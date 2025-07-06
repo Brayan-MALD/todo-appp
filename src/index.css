@@ -5,7 +5,11 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
+<<<<<<< HEAD
   background-color: #f10202;
+=======
+  background-color: #242424;
+>>>>>>> 8b9808952aa16ad877d622e65ad9c62c46edc353
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,11 +19,19 @@
 
 a {
   font-weight: 500;
+<<<<<<< HEAD
   color: #00ccff;
   text-decoration: inherit;
 }
 a:hover {
   color: #00f7ff;
+=======
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+>>>>>>> 8b9808952aa16ad877d622e65ad9c62c46edc353
 }
 
 body {
@@ -47,7 +59,11 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
+<<<<<<< HEAD
   border-color: #00eeff;
+=======
+  border-color: #646cff;
+>>>>>>> 8b9808952aa16ad877d622e65ad9c62c46edc353
 }
 button:focus,
 button:focus-visible {
